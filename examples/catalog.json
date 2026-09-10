@@ -1,0 +1,61 @@
+{
+  "products": [
+    {
+      "id": "demo:canvas-tote",
+      "title": "Everyday Canvas Tote",
+      "vendor": "Example Supply",
+      "productType": "Tote Bags",
+      "descriptionHtml": "<p>A durable cotton canvas tote for everyday trips, grocery runs, and light travel. The wide opening makes packing simple, while the inside pocket keeps small essentials easy to find. Reinforced handles support comfortable carrying by hand or over the shoulder. Spot clean and air dry after use. Dimensions: 38 by 40 centimetres.</p>",
+      "images": [
+        {
+          "url": "https://example.com/canvas-tote.jpg",
+          "altText": "Natural canvas tote with reinforced handles and an inside pocket"
+        }
+      ],
+      "variants": [
+        {
+          "sku": "TOTE-NATURAL",
+          "price": "29.00",
+          "barcode": ""
+        }
+      ],
+      "gtinRequired": false
+    },
+    {
+      "id": "demo:ceramic-cup",
+      "title": "Ceramic Cup",
+      "vendor": "",
+      "productType": "Drinkware",
+      "descriptionHtml": "<p>A beautiful cup.</p>",
+      "images": [
+        {
+          "url": "https://example.com/cup.jpg",
+          "altText": ""
+        }
+      ],
+      "variants": [
+        {
+          "sku": "CUP-SMALL",
+          "price": "18.00",
+          "barcode": "12345"
+        }
+      ]
+    },
+    {
+      "id": "demo:travel-pouch",
+      "title": "Travel Pouch",
+      "vendor": "Example Supply",
+      "productType": "",
+      "descriptionHtml": "<p>Travel pouch with zip closure.</p>",
+      "images": [],
+      "variants": [
+        {
+          "sku": "CUP-SMALL",
+          "price": "-5",
+          "barcode": ""
+        }
+      ],
+      "gtinRequired": true
+    }
+  ]
+}

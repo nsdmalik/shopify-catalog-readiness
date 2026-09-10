@@ -1,0 +1,19 @@
+{
+  "name": "@nsdmalik/shopify-catalog-readiness",
+  "version": "0.1.0",
+  "description": "Explainable, offline audits for Shopify product catalog completeness and consistency.",
+  "type": "module",
+  "private": true,
+  "engines": { "node": ">=22" },
+  "exports": "./src/audit.mjs",
+  "bin": { "catalog-readiness": "./src/cli.mjs" },
+  "scripts": {
+    "test": "node --test",
+    "demo": "node src/cli.mjs examples/catalog.json",
+    "check": "node --check src/audit.mjs && node --check src/cli.mjs && node --test"
+  },
+  "license": "MIT",
+  "author": "Nauman Masood",
+  "repository": { "type": "git", "url": "https://github.com/nsdmalik/shopify-catalog-readiness.git" },
+  "keywords": ["shopify", "catalog", "data-quality", "product-data", "audit", "aeo", "geo"]
+}
