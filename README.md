@@ -1,5 +1,7 @@
 # Shopify Catalog Readiness
 
+[![Tests](https://github.com/nsdmalik/shopify-catalog-readiness/actions/workflows/test.yml/badge.svg)](https://github.com/nsdmalik/shopify-catalog-readiness/actions/workflows/test.yml)
+
 **Find the product-data gaps before they become integration problems.**
 
 An offline audit library and CLI for Shopify catalog snapshots. It checks content completeness, images, variant prices, SKU collisions, and GTIN check digits, then produces an explainable report with field-level findings and suggested next steps.
@@ -7,6 +9,27 @@ An offline audit library and CLI for Shopify catalog snapshots. It checks conten
 No dependencies. No API credentials. No store writes. Runs on Node.js 22 or later.
 
 [Example report](examples/report.md) · [Input format](docs/input-format.md) · [Rules and scoring](docs/rules.md) · [Architecture](docs/architecture.md)
+
+## See the result
+
+The included three-product fixture produces a **67/100** completeness and consistency score, with **2 errors and 9 warnings**. Every finding identifies a field and a next step. This is a data-quality score, not a prediction of search rankings or sales.
+
+| Example finding | Why it matters | Suggested action |
+| --- | --- | --- |
+| Ceramic Cup: invalid GTIN check digit | An identifier fails a deterministic validation rule. | Check the assigned identifier against its authoritative source. |
+| Travel Pouch: invalid price | Downstream consumers cannot use the supplied price. | Supply a nonnegative decimal amount. |
+| Repeated SKU | The snapshot contains an identity ambiguity. | Check whether the repetition is intentional. |
+
+```mermaid
+flowchart LR
+    A[Catalog snapshot] --> B[Validate identity and shape]
+    B --> C[Evaluate explicit rules]
+    C --> D[Field-level findings]
+    D --> E[Readable report]
+    D --> F[CI pass or fail]
+```
+
+[Read the full example report](examples/report.md) · [Explore the engineering decisions](docs/architecture.md)
 
 ## Run it
 
