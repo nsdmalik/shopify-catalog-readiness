@@ -1,0 +1,27 @@
+# Read-only page query. Fetch ALL product, variant and media pages before auditing.
+# $after only paginates products. Nested connections require separate pagination.
+query CatalogAuditPage($after: String) {
+  products(first: 50, after: $after) {
+    pageInfo { hasNextPage endCursor }
+    nodes {
+      id
+      title
+      descriptionHtml
+      vendor
+      productType
+      seo { title description }
+      media(first: 100) {
+        pageInfo { hasNextPage endCursor }
+        nodes {
+          __typename
+          alt
+          ... on MediaImage { image { url altText } }
+        }
+      }
+      variants(first: 100) {
+        pageInfo { hasNextPage endCursor }
+        nodes { sku price barcode }
+      }
+    }
+  }
+}

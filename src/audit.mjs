@@ -44,7 +44,16 @@ export function normalizeCatalog(input) {
     ids.add(p.id.trim());
     if (p.gtinRequired !== undefined && typeof p.gtinRequired !== 'boolean') fail(`${path}.gtinRequired must be a boolean`);
     if (p.seo != null && !object(p.seo)) fail(`${path}.seo must be an object`);
-    const images = connection(p.images, `${path}.images`).map((im, i) => {
+    if (p.images != null && p.media != null) fail(`${path} must supply images or media, not both`);
+    const sourceImages = p.media == null ? connection(p.images, `${path}.images`) :
+      connection(p.media, `${path}.media`).flatMap((media, i) => {
+        if (!object(media) || !present(media.__typename)) fail(`${path}.media[${i}] requires __typename`);
+        if (media.__typename !== 'MediaImage') return [];
+        if (media.image == null) return [{ url: '', altText: textField(media.alt, `${path}.media[${i}].alt`) }];
+        if (!object(media.image)) fail(`${path}.media[${i}].image must be an object or null`);
+        return [{ url: media.image.url, altText: media.image.altText ?? media.alt }];
+      });
+    const images = sourceImages.map((im, i) => {
       if (!object(im)) fail(`${path}.images[${i}] must be an object`);
       return { url: textField(im.url, `${path}.images[${i}].url`), altText: textField(im.altText, `${path}.images[${i}].altText`) };
     });

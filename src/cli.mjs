@@ -51,6 +51,7 @@ function main(args) {
   const stat = statSync(input);
   if (!stat.isFile() || stat.size > 10 * 1024 * 1024) throw new Error('Input must be a regular JSON file no larger than 10 MiB');
   const raw = readFileSync(input, 'utf8');
+  if (Buffer.byteLength(raw, 'utf8') > 10 * 1024 * 1024) throw new Error('Input exceeds 10 MiB');
   let catalog;
   try { catalog = JSON.parse(raw.replace(/^\uFEFF/, '')); }
   catch { throw new Error('Input is not valid JSON'); }

@@ -74,3 +74,20 @@ test('Markdown escapes untrusted product data', () => {
 test('reports are deterministic', () => {
  const input = catalog(product({vendor:''})); assert.deepEqual(auditCatalog(input),auditCatalog(input));
 });
+
+test('Shopify MediaImage exports map to normalized images; video does not count as a product image', () => {
+ const p = product(); delete p.images;
+ p.media = { nodes: [{__typename:'MediaImage',alt:'Canvas tote',image:{url:'https://example.com/tote.jpg',altText:null}},{__typename:'Video'}],pageInfo:{hasNextPage:false} };
+ assert.equal(auditCatalog(catalog(p)).summary.score,100);
+ assert.equal(normalizeCatalog(catalog(p))[0].images.length,1);
+});
+test('unprocessed media and incomplete media exports are not treated as ready', () => {
+ const p = product();delete p.images;
+ p.media={nodes:[{__typename:'MediaImage',image:null}],pageInfo:{hasNextPage:false}};
+ assert.equal(auditCatalog(catalog(p)).summary.errors,1);
+ p.media.pageInfo.hasNextPage=true;assert.throws(()=>auditCatalog(catalog(p)),/incomplete/);
+});
+test('ambiguous or malformed media inputs fail before scoring', () => {
+ assert.throws(()=>auditCatalog(catalog(product({media:{nodes:[]}}))),/images or media/);
+ const p=product();delete p.images;p.media={nodes:[{}]};assert.throws(()=>auditCatalog(catalog(p)),/__typename/);
+});

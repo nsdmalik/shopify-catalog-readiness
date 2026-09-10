@@ -1,0 +1,367 @@
+{
+  "schemaVersion": "1.0",
+  "rulesetVersion": "1.0",
+  "policy": {
+    "minDescriptionWords": 40,
+    "scoring": "Percentage of applicable scored checks that pass. Checks have equal weight; products with more variants/images contribute more checks."
+  },
+  "scope": "Supplied snapshot only. No storefront crawl, image fetch, AI ranking prediction, or store modification.",
+  "summary": {
+    "products": 3,
+    "passed": 22,
+    "applicable": 33,
+    "errors": 2,
+    "warnings": 9,
+    "skipped": 7,
+    "score": 67
+  },
+  "products": [
+    {
+      "id": "demo:canvas-tote",
+      "title": "Everyday Canvas Tote",
+      "score": 100,
+      "passed": 11,
+      "applicable": 11,
+      "checks": [
+        {
+          "rule": "title.present",
+          "path": "title",
+          "status": "pass",
+          "scored": true,
+          "message": "Product title is present",
+          "remediation": ""
+        },
+        {
+          "rule": "description.depth",
+          "path": "descriptionHtml",
+          "status": "pass",
+          "scored": true,
+          "message": "52 description words; configured threshold 40",
+          "remediation": ""
+        },
+        {
+          "rule": "brand.present",
+          "path": "vendor",
+          "status": "pass",
+          "scored": true,
+          "message": "Brand/vendor is present",
+          "remediation": ""
+        },
+        {
+          "rule": "type.present",
+          "path": "productType",
+          "status": "pass",
+          "scored": true,
+          "message": "Product type is present",
+          "remediation": ""
+        },
+        {
+          "rule": "images.present",
+          "path": "images",
+          "status": "pass",
+          "scored": true,
+          "message": "Images are present",
+          "remediation": ""
+        },
+        {
+          "rule": "image.url",
+          "path": "images[0].url",
+          "status": "pass",
+          "scored": true,
+          "message": "HTTP(S) image URL is syntactically valid",
+          "remediation": ""
+        },
+        {
+          "rule": "image.alt",
+          "path": "images[0].altText",
+          "status": "pass",
+          "scored": true,
+          "message": "Image alternative text is present",
+          "remediation": ""
+        },
+        {
+          "rule": "variants.present",
+          "path": "variants",
+          "status": "pass",
+          "scored": true,
+          "message": "Variants are present",
+          "remediation": ""
+        },
+        {
+          "rule": "price.valid",
+          "path": "variants[0].price",
+          "status": "pass",
+          "scored": true,
+          "message": "Price is a nonnegative decimal",
+          "remediation": ""
+        },
+        {
+          "rule": "sku.present",
+          "path": "variants[0].sku",
+          "status": "pass",
+          "scored": true,
+          "message": "SKU is present",
+          "remediation": ""
+        },
+        {
+          "rule": "sku.unique",
+          "path": "variants[0].sku",
+          "status": "pass",
+          "scored": true,
+          "message": "SKU is unique in this snapshot",
+          "remediation": ""
+        },
+        {
+          "rule": "gtin.optional",
+          "path": "variants[0].barcode",
+          "status": "skip",
+          "scored": false,
+          "message": "No barcode supplied; GTIN is not required by this snapshot policy",
+          "remediation": ""
+        },
+        {
+          "rule": "seo.title",
+          "path": "seo.title",
+          "status": "skip",
+          "scored": false,
+          "message": "No explicit SEO title; platform defaults may apply",
+          "remediation": ""
+        },
+        {
+          "rule": "seo.description",
+          "path": "seo.description",
+          "status": "skip",
+          "scored": false,
+          "message": "No explicit SEO description; platform defaults may apply",
+          "remediation": ""
+        }
+      ]
+    },
+    {
+      "id": "demo:ceramic-cup",
+      "title": "Ceramic Cup",
+      "score": 58,
+      "passed": 7,
+      "applicable": 12,
+      "checks": [
+        {
+          "rule": "title.present",
+          "path": "title",
+          "status": "pass",
+          "scored": true,
+          "message": "Product title is present",
+          "remediation": ""
+        },
+        {
+          "rule": "description.depth",
+          "path": "descriptionHtml",
+          "status": "warning",
+          "scored": true,
+          "message": "3 description words; configured threshold 40",
+          "remediation": "Describe the product, material, intended use, and relevant specifications."
+        },
+        {
+          "rule": "brand.present",
+          "path": "vendor",
+          "status": "warning",
+          "scored": true,
+          "message": "Brand/vendor is missing",
+          "remediation": "Supply the correct product brand or vendor."
+        },
+        {
+          "rule": "type.present",
+          "path": "productType",
+          "status": "pass",
+          "scored": true,
+          "message": "Product type is present",
+          "remediation": ""
+        },
+        {
+          "rule": "images.present",
+          "path": "images",
+          "status": "pass",
+          "scored": true,
+          "message": "Images are present",
+          "remediation": ""
+        },
+        {
+          "rule": "image.url",
+          "path": "images[0].url",
+          "status": "pass",
+          "scored": true,
+          "message": "HTTP(S) image URL is syntactically valid",
+          "remediation": ""
+        },
+        {
+          "rule": "image.alt",
+          "path": "images[0].altText",
+          "status": "warning",
+          "scored": true,
+          "message": "Image alternative text is missing",
+          "remediation": "Describe the image for people who cannot see it."
+        },
+        {
+          "rule": "variants.present",
+          "path": "variants",
+          "status": "pass",
+          "scored": true,
+          "message": "Variants are present",
+          "remediation": ""
+        },
+        {
+          "rule": "price.valid",
+          "path": "variants[0].price",
+          "status": "pass",
+          "scored": true,
+          "message": "Price is a nonnegative decimal",
+          "remediation": ""
+        },
+        {
+          "rule": "sku.present",
+          "path": "variants[0].sku",
+          "status": "pass",
+          "scored": true,
+          "message": "SKU is present",
+          "remediation": ""
+        },
+        {
+          "rule": "sku.unique",
+          "path": "variants[0].sku",
+          "status": "warning",
+          "scored": true,
+          "message": "SKU is repeated in this snapshot",
+          "remediation": "Confirm whether the shared SKU is intentional before changing it."
+        },
+        {
+          "rule": "gtin.checksum",
+          "path": "variants[0].barcode",
+          "status": "error",
+          "scored": true,
+          "message": "Barcode is not a valid GTIN format/check digit",
+          "remediation": "Check the product identifier against its authoritative source. Do not invent a barcode."
+        },
+        {
+          "rule": "seo.title",
+          "path": "seo.title",
+          "status": "skip",
+          "scored": false,
+          "message": "No explicit SEO title; platform defaults may apply",
+          "remediation": ""
+        },
+        {
+          "rule": "seo.description",
+          "path": "seo.description",
+          "status": "skip",
+          "scored": false,
+          "message": "No explicit SEO description; platform defaults may apply",
+          "remediation": ""
+        }
+      ]
+    },
+    {
+      "id": "demo:travel-pouch",
+      "title": "Travel Pouch",
+      "score": 40,
+      "passed": 4,
+      "applicable": 10,
+      "checks": [
+        {
+          "rule": "title.present",
+          "path": "title",
+          "status": "pass",
+          "scored": true,
+          "message": "Product title is present",
+          "remediation": ""
+        },
+        {
+          "rule": "description.depth",
+          "path": "descriptionHtml",
+          "status": "warning",
+          "scored": true,
+          "message": "5 description words; configured threshold 40",
+          "remediation": "Describe the product, material, intended use, and relevant specifications."
+        },
+        {
+          "rule": "brand.present",
+          "path": "vendor",
+          "status": "pass",
+          "scored": true,
+          "message": "Brand/vendor is present",
+          "remediation": ""
+        },
+        {
+          "rule": "type.present",
+          "path": "productType",
+          "status": "warning",
+          "scored": true,
+          "message": "Product type is missing",
+          "remediation": "Provide a consistent product type for this catalog."
+        },
+        {
+          "rule": "images.present",
+          "path": "images",
+          "status": "warning",
+          "scored": true,
+          "message": "No images supplied",
+          "remediation": "Include product images in the snapshot."
+        },
+        {
+          "rule": "variants.present",
+          "path": "variants",
+          "status": "pass",
+          "scored": true,
+          "message": "Variants are present",
+          "remediation": ""
+        },
+        {
+          "rule": "price.valid",
+          "path": "variants[0].price",
+          "status": "error",
+          "scored": true,
+          "message": "Price is missing or invalid",
+          "remediation": "Provide a nonnegative decimal price without currency symbols."
+        },
+        {
+          "rule": "sku.present",
+          "path": "variants[0].sku",
+          "status": "pass",
+          "scored": true,
+          "message": "SKU is present",
+          "remediation": ""
+        },
+        {
+          "rule": "sku.unique",
+          "path": "variants[0].sku",
+          "status": "warning",
+          "scored": true,
+          "message": "SKU is repeated in this snapshot",
+          "remediation": "Confirm whether the shared SKU is intentional before changing it."
+        },
+        {
+          "rule": "gtin.required",
+          "path": "variants[0].barcode",
+          "status": "warning",
+          "scored": true,
+          "message": "GTIN required by this snapshot policy but missing",
+          "remediation": "Supply the assigned GTIN or confirm an applicable exemption."
+        },
+        {
+          "rule": "seo.title",
+          "path": "seo.title",
+          "status": "skip",
+          "scored": false,
+          "message": "No explicit SEO title; platform defaults may apply",
+          "remediation": ""
+        },
+        {
+          "rule": "seo.description",
+          "path": "seo.description",
+          "status": "skip",
+          "scored": false,
+          "message": "No explicit SEO description; platform defaults may apply",
+          "remediation": ""
+        }
+      ]
+    }
+  ]
+}
